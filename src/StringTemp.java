@@ -8,7 +8,7 @@ import java.util.*;
 public class StringTemp {
 public static void main(String args[])
 {
-	String UserName;
+	String UserName; 
 	Scanner il = new Scanner(System.in);
 	System.out.println("Please Enter your Name : ");
    UserName =il.nextLine();

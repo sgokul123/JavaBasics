@@ -17,11 +17,12 @@ import java.util.*;
 
 	        while(i <= num)
 	        {
-	        	if(i==num) System.out.print("1/"+i+"");
-	        	else    System.out.print("1/"+i+" +");
+	        	if(i==num) 
+	        		System.out.print("1/"+i+"");
+	        	else   
+	        		System.out.print("1/"+i+" +");
 	             rst = rst + (double) 1 / i;
-
-	             i++;
+	             	 	i++;
 	        }
 
 	        System.out.println("\n\nSum of Harmonic Series is "+rst); 

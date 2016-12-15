@@ -1,56 +1,36 @@
+import java.util.Arrays;
+import java.util.Random;
+
 
 public class Utility {
 
 	public static void main(String args[]){
 		
 		Utility u=new Utility();
-		boolean b=u.isArmStrong(20);
-		if(b){
-			System.out.println("Number is  Armstrong .");
-		}else{
-			System.out.println("Number is Not Armstrong .");
-		}
-		
-		private static boolean isAnagram(String s1,String s2){
-			String s1,s2;
-			s1=s1;
-			s2=s2;
-			int b=0,c=0;
-			if(s1.length()>s2.length())
-			   {
-				System.out.print("String 2nd is smaller");
-			   }
-			  else if(s1.length()<s2.length())
-			  {
-				System.out.println("String 1st is smaller");
-				}
-			  else {
-				  
-			   for(int i=0;i<s1.length();i++) 
-			   {
-			      char s = s1.charAt(i);
-			      for(int j=0;j<s2.length();j++) 
-			      {
-			         if(s==s2.charAt(j))
-			         {
-			            b++;
-			         } 
-			      }
-			      if(b==0)
-			         break;
-			   }
-			   if(b==0)
-			      System.out.print("String is not Anagram:");
-			   else 
-			      System.out.print("String is Anagram :");
-			} 
-			System.out.print("");
-		}
-		
 		
 		
 	}
-	private static boolean isArmStrong(int number) {
+	//validate username by checking length
+	public boolean checkLength(String temp)
+	{
+		int length=temp.length();
+		if(length<3)
+		{
+		return false;
+		}
+		else
+		{
+		return true;	
+		}
+	}
+	public String replaceUsername(String temp)
+	{
+		String uname="Hello username";
+		uname=uname.replaceAll("username",temp);
+		return uname;
+	}
+
+	public  boolean isArmStrong(int number) {
         int result = 0;
         int orig = number;
         while(number != 0){
@@ -65,5 +45,158 @@ public class Utility {
       
         return false;
     } 
+
+//Calculate percentage of head and tail
+public void countHeadTail(int no)
+{
+int head=0;
+int tail=0;
+int i;
+float headPer,tailPer;
+	Random r=new Random();
+	for(i=0;i<no;i++)
+	{
+		if((r.nextInt(no)%2)< 0.5 ) //creating random no to count head and tail
+		{
+		head++;
+		}
+		else
+		{
+		tail++;
+		}
+	}
+	headPer=head*(100/no);	//calculating percentage of head
+	tailPer=tail*(100/no);	//calculating percentage of tail
+	System.out.println("No of heads:"+headPer);
+	System.out.println("No of tails:"+tailPer);
 }
-//pratikranjane94/basic-programs
+//To calculate prime factors of n no
+public void PrimeFactors(int no) 
+{
+	int factor;
+	for(factor=2;factor*factor<=no;factor++)
+	{
+		while(no%factor==0)
+		{
+			System.out.println(factor+" ");
+			no=no/factor;
+		}
+	}
+	if(no>1)
+		System.out.println(no);
+}
+//String is anagram or not
+public boolean isAnagram(String str1,String str2)
+{
+int i,j,flag=0;
+if(str1.length()==str2.length())
+	{
+		char ctr1[]=str1.toCharArray();
+		char ctr2[]=str2.toCharArray();
+		System.out.println(str1.length());
+		for(i=0;i<str1.length();i++)
+		{
+			for(j=0;j<str2.length();j++)
+			{
+				if(ctr1[i]==ctr2[j])
+				{
+				flag=1;
+				break;
+				}
+				else
+				flag=0;
+			}
+		}
+	}
+	if(flag==1)
+	return true;
+	else
+	return false;
+    	
+}
+//Find triple that sums to zero
+public void findTriple(int list[],int no)
+{
+int i,j,k,flag=0;
+for(i=0;i<no;i++)
+{
+	for(j=i+1;j<no;j++)
+	{
+		for(k=j+1;k<no;k++)
+		{
+			if((list[i]+list[j]+list[k])==0)
+			{
+			System.out.println("Combination of triples: "+list[i]+" "+list[j]+" "+list[k]+"=0");
+			flag=1;
+			break;
+			}
+		}
+	}
+}
+if(flag==0)
+	System.out.println("No triple found");
+}
+
+
+//search no using Binary search
+public void binaryNoSearch(int search,int array[]) 
+{
+	int key,n;
+	int middle;
+	System.out.println(" No of element you have. ");
+	n=array.length;
+	
+	int first=0,last=n,flag=0;
+		//search no using Binary search
+	int arr[]=new int[n];
+	arr=array;
+    Arrays.sort(arr);
+    for(int i=0;i<n;i++){
+		System.out.print("   "+arr[i]+"At index ->"+i);
+	}
+    System.out.println();
+    key=search;
+     middle=(first+last)/2;
+		while(first<=last)
+		{
+			if(arr[middle]==key){
+				System.out.println("Elment is Present in array at"+middle+"     Location");
+				flag=1;
+				break;
+			}
+				else if(key<arr[middle]){
+				last=middle-1;
+				middle=(first+last)/2;
+				
+			}
+			else{
+				first=middle+1;
+				middle=(first+last)/2;
+			}
+			
+	  }
+		if(flag==0){
+			System.out.println("Element is Not Present in List ...");
+		}
+}
+
+//Wtrite code year validation.
+	public int isValid(int n){
+		int flag=0,cnt=0;
+		int num=n;;
+			while(num>0){
+    			num=num/10;
+    			cnt=cnt+1;
+    		}
+    		if(cnt==4)
+    		{
+    			flag=1;
+    			}
+    		else {
+    				flag=0;
+    				}
+    	
+    	return flag;
+    
+	}
+}

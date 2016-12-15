@@ -6,15 +6,16 @@ import java.util.Scanner;
  */
 public class LeapOrNot
 {
-    public static void main(String args[])
+	Scanner sc=new Scanner(System.in);
+	public static void main(String args[])
     {
- 
+		LeapOrNot u=new LeapOrNot();
       int year;
      int ch=0;
         Scanner sc = new Scanner(System.in);
         while(ch!=1){
         		System.out.println("Please Enter the Year  :");
-        year=sc.nextInt();
+        year=u.isValid();
         boolean isLeapYear = false;
  
         if(year % 400 == 0)
@@ -48,5 +49,26 @@ public class LeapOrNot
     
         }
         System.out.println("Thanks...");
+       
+    }
+    int isValid(){
+    	int num=0,num2=0;
+    	int flag=0,cnt=0;
+    	while(flag!=1){
+    		System.out.println("Enter Year :");
+    		num=sc.nextInt();
+    		num2=num;
+    		while(num>0){
+    			num=num/10;
+    			cnt=cnt+1;
+    		}
+    		if(cnt==4){flag = 1;}
+    		else {
+    			System.out.println("Year Must be 4 disit ..."+cnt);
+    		    cnt=0;
+    		}
+    	}
+    	return num2;
+    	
     }
 }

@@ -48,9 +48,9 @@ public class ThreeSum {
     		a[i]=sc.nextInt();  // In in = new In(args[0]);
     	     
     		}
-        StopWatch timer = new StopWatch();
+        //StopWatch timer = new StopWatch();
         int count = count(a);
-        System.out.println("elapsed time = " + timer.elapsedTime());
+        //System.out.println("elapsed time = " + timer.elapsedTime());
         System.out.println(count);
     } 
 } 
