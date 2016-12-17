@@ -23,7 +23,7 @@ public class ToDArray {
 			}
 		} 
 		OutputStream o=null;
-		
+		System.out.println(array);
 		for(int i=0;i<m;i++){
 			for(int j=0;j<n;j++){
 				System.out.println(array[i][j]);
@@ -32,8 +32,10 @@ public class ToDArray {
 		}
 		OutputStreamWriter os=new OutputStreamWriter(o);
 	//m	System.out.println(os);
+	sc.close();
 	}catch(Exception e){
 	  	System.out.print(""+e);
 	}
+	
 	}
 }

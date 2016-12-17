@@ -1,12 +1,14 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Random;
 
 
 public class Utility {
-
+	BufferedReader br;;
 	public static void main(String args[]){
 		
-		Utility u=new Utility();
+		//Utility u=new Utility();
 		
 		
 	}
@@ -199,4 +201,104 @@ public void binaryNoSearch(int search,int array[])
     	return flag;
     
 	}
+	//Search world using binary search
+	public void binaryWordSearch(String list[],String word) 
+	{
+		int i,first=0;
+		int count=0;
+		int last=list.length-1;
+		int middle=(first+last)/2;
+		//searching start
+		for(i=0;i<=last;i++)
+		{
+			if((list[middle].compareTo(word))==0)//match found
+			{
+			count++;
+			System.out.println("Match found at "+(middle+1));
+			break;
+			}
+			else if(list[middle].compareTo(word)<0)//middle is less than word to be search
+			{
+			first=middle+1;
+			count++;
+			}
+			else	//middle is greater than word to be search
+			{
+			last=middle-1;
+			count++;
+			}
+			middle=(first+last)/2;
+		}
+		if(first>last)	//word is not found
+			System.out.println("Word is not found "+word);
+
+		System.out.println("No of attempts to search"+count);
+	}
+
+
+	//bubble sort for integers
+	public int[] bubbleSort(int list[],int no)
+	{
+		int i,j,temp;
+		for(i=0;i<no;i++)
+		{
+			for(j=0;j<no-i-1;j++)
+			{
+			//bubble sort logic
+				if(list[j]>list[j+1])
+				{
+				temp=list[j+1];
+				list[j+1]=list[j];
+				list[j]=temp;
+				}
+			}
+		}
+		return list;
+	}
+	//validate username by checking length
+	public boolean checkSLength(String temp)
+	{
+		int length=temp.length();
+		if(length<3)
+		{
+		return false;
+		}
+		else
+		{
+		return true;	
+		}
+	}
+	
+	public int inputInteger()
+    {
+		br = new BufferedReader(new InputStreamReader(System.in));
+		try{
+   		int number = Integer.parseInt(br.readLine());
+   		return number;
+   		}catch(Exception e) {
+   			System.out.println(e);
+    }
+    return 0;
+}
+	//input string
+		public String inputString(){
+			try{
+				return br.readLine();
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+			return "";
+	}
+		//input double
+		public double inputDouble(){
+			try{
+				return br.read();
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+			return 0.0;
+		}
+
 }

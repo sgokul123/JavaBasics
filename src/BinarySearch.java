@@ -1,5 +1,5 @@
 import java.util.Arrays;
-import java.util.Random;
+
 import java.util.Scanner;
 
 
@@ -48,7 +48,7 @@ public class BinarySearch {
 			if(flag==0){
 				System.out.println("Element is Not Present in List ...");
 			}
-			
+	sc.close();		
 	}
 	
 	

@@ -6,9 +6,10 @@ public class MasterP {
 	Utility u;
 	MasterP(){
 		u=new Utility();
-		BinaryS();
+		//BinaryS();
 	//	armStrong();
-		int f=u.isValid(20235);
+		bubbleSort();
+	int f=u.isValid(20235);
 		if(f==1){
 			System.out.println("Valid");
 		}else{
@@ -16,9 +17,7 @@ public class MasterP {
 		}
 	}
 	public static void main(String args[]){
-		
 		new MasterP();
-
 	}
 	public void armStrong(){
 		 System.out.println("Please enter a 3 digit number to find if its an Armstrong number:");
@@ -29,6 +28,23 @@ public class MasterP {
 	            System.out.println("Number : " + number + " is not an Armstrong number");
 	        }
 	
+	}
+	public void bubbleSort(){
+		int no;
+		System.out.println("Enter array size :");
+		no=sc.nextInt();
+		
+		int list []=new int[no];
+		int list1 []=new int[no];
+		for(int i=0;i<no;i++){
+			list[i]=sc.nextInt();
+		}
+		
+		Bubblesort b =new Bubblesort();
+       list1=b.bubbleSort(list, no);
+       for(int i=0;i<no;i++){
+			System.out.print("     ->"+list1[i]);
+		}
 	}
 	public void BinaryS(){
 		int n,k;
@@ -43,4 +59,5 @@ public class MasterP {
 		k=sc.nextInt();
 		u.findTriple(arr,n);
 	}
+	
 }
