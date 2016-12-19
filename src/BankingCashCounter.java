@@ -1,3 +1,10 @@
+/*
+ * Disc :Bank OPerations
+ * Auth : Sonawane  Gokul
+ * Dateb :17/12/2016
+ */
+import bridge.Utility;
+
 
 public class BankingCashCounter{
 	public static void main(String[] args){
@@ -6,7 +13,7 @@ public class BankingCashCounter{
 		int choice;
 		boolean check = true;
 		while(check){
-			System.out.println("\nPlease choose your option:\n1.Deposit\n2.Withdraw\n3.Balance Info\n4.Exit");
+			System.out.println("\nPlease choose your option:\n1.Deposit\n2.Withdraw\n3.Balance Info \n4. remove \n 5. display\n 0. Exit");
 			choice = u.inputInteger();
 
 			switch(choice){
@@ -22,7 +29,17 @@ public class BankingCashCounter{
 					bo.getBalance();
 					break;
 				}
-				case 4:{
+				case 4:
+				{
+					bo.remove();
+					break;
+				}
+				case 5:{
+					bo.display();
+					break;
+				}
+				case 0:
+				{
 					System.out.println("Exit");
 					check = false;
 					break;

@@ -7,6 +7,8 @@
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import bridge.Utility;
 public class CouponNumber {
  
     // return a random coupon between 0 and n-1

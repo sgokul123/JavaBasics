@@ -1,16 +1,24 @@
-
+import java.util.Scanner;
 public class QueueNode{
-	int data;
+	long data;
+	String s1;
 	QueueNode link;
 
-	public QueueNode(int data, QueueNode node){
+	public QueueNode(long data,String ss, QueueNode node){
 		this.data = data;
+		this.s1=ss;
 		link = node;
+	}
+	public QueueNode(long amount2, String s12, Object node) {
+		this.data = data;
+		this.s1=s12;
+		link = (QueueNode) node;
+		// TODO Auto-generated constructor stub
 	}
 	public void setData(int data){
 		this.data = data;
 	}
-	public int getData(){
+	public long getData(){
 		return data;
 	}
 
