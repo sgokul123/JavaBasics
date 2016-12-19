@@ -10,6 +10,6 @@ class Qnodes{
 	
 }
 public class isNull {
-public static void main(){s
+public static void main(){
 }
 }

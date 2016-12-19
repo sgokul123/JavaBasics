@@ -19,7 +19,7 @@ for(int i = 0; i < size; i++) {
 stack.push(data.charAt(i));
 queue.add(data.charAt(i));
 }
-if(stack.push(sizSimpleBalancedParenthesese).equals(queue.remove()))
+if(stack.push("").equals(queue.remove()))
 {
 System.out.println("String is  a polindrome:"+data);
 }else
