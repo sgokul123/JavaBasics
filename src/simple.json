@@ -1,0 +1,61 @@
+{
+  "Inventory": [
+    {
+      "Rice": [
+        {
+          "name": "basmati",
+          "weight": 10,
+          "price": 80
+        },
+        {
+          "name": "paella",
+          "weight": 15,
+          "price": 50
+        },
+        {
+          "name": "glutinous",
+          "weight": 18,
+          "price": 100
+        }
+      ]
+    },
+    {
+      "Pulses": [
+        {
+          "name": "beans",
+          "weight": 5,
+          "price": 90
+        },
+        {
+          "name": "black gram",
+          "weight": 12,
+          "price": 110
+        },
+        {
+          "name": "chickpeas",
+          "weight": 14,
+          "price": 80
+        }
+      ]
+    },
+    {
+      "Wheats": [
+        {
+          "name": "Bulgar",
+          "weight": 12,
+          "price": 30
+        },
+        {
+          "name": "Durum",
+          "weight": 8,
+          "price": 40
+        },
+        {
+          "name": "Kamut",
+          "weight": 5,
+          "price": 25
+        }
+      ]
+    }
+  ]
+}
