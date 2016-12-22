@@ -1,4 +1,8 @@
-
+/*
+*Disc : JSON Inventory Data Management of Rice, Pulses and Wheats
+*Auth : Sonawane Gokul
+*Date : 20/12/2016
+*/
 import java.io.FileReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
