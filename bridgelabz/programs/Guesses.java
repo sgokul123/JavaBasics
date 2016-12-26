@@ -10,63 +10,48 @@ public class Guesses {
 	public static void main(String args[])
      {
 		int status=0,min=0,max=100,low=0,high=1,correct=2;
+		String UserVal="No";
 		int GuessVal,Guess=0,tries=0;
 		System.out.println("It is a User Vs Computer Game .");
 		System.out.println("Please Enterr your Value between 0 To 100");
 		Utility u=new Utility();
-		String EnterKey="Hola";
 		GuessVal=u.inputInteger();
-		Guess=(int) (Math.random()*100+1);
+		Guess=50;
 		while(status!=correct){
 			tries=tries+1;
 			System.out.println("Computer Guess : "+Guess);
-			System.out.println("Please Press Enter Key To Continue");
-			if(Guess<GuessVal)
-			{
-				
-				status=low;
-				
+			
+			if(Guess==GuessVal){
+				status=correct;	
 			}
-			else if(Guess>GuessVal)
-			{
+			 else{
+				System.out.println("is your Value is Less Guess value then  type : 'Yes' else  type :'No' ");
+						UserVal=u.inputString();
+			 if(UserVal.equalsIgnoreCase("No"))	{
+				min=Guess;
+					status=low;
 				
+			  }
+			else if(UserVal.equalsIgnoreCase("Yes")){
+				max=Guess;
 				status=high;
 				
-			}
-			else if(Guess==GuessVal)
-			{
-				
-			status=correct;	
-			
-			} 
+			  }
 			else{
 				
 				System.out.println("Soryy Something is wrong...");
-				
+			
+			  }
 			}
 			//this is anothe if-else
 			if(status==high){
-				
-				max=Guess;
-				
-				do{
-					
-					Guess=(int)(Math.random()%100+1);
-					
-				}while(Guess>max ||Guess <min);
+					Guess=(min+max)/2;
 				
 				
 			}else if(status==low){
+				Guess=(min+max)/2;
 				
-				min=Guess;
-				
-				do{
-					
-					Guess=(int) (Math.random()%100+1);
-					
-				}while(Guess>max ||Guess <min);
-		
-			}
+				}
 			else if(status==correct){
 				
 				System.out.println("Computer Guessed it...");

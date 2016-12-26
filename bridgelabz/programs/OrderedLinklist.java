@@ -88,7 +88,7 @@ public class OrderedLinklist
 			
 		}
 		if(flag)
-		return false;
+		return true;
 		else return false;
 	}
 	public void showList()
