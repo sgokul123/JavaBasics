@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_wish_you"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="1dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp"
+    android:paddingTop="1dp"
+    tools:context="com.bridgelabz.happynewyear.WishYou">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/new11"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:text="My best wishes for you,\nGreat stat for Jan,\nLove for Feb,\nPeace for March,\nNo Worries for April,\nFun for May,\nJoy for June to Nov,\nHappiness for Dec,\nHave a Lucky and Wonderful 2017"
+            android:textAlignment="center"
+            android:layout_width="300dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_green_light"
+            android:layout_height="250dp"
+            android:id="@+id/textView"
+            android:layout_marginBottom="43dp"
+            android:layout_above="@+id/button2"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:text="Wishes"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:id="@+id/button4"
+            android:layout_below="@+id/textView" />
+
+        <Button
+            android:text="Gift For You"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_width="200dp"
+            android:textSize="25dp"
+            android:layout_height="50dp"
+            android:id="@+id/button2"
+            android:layout_marginBottom="71dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:text="Back"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="11dp"
+            android:id="@+id/button5" />
+
+    </RelativeLayout>
+</RelativeLayout>

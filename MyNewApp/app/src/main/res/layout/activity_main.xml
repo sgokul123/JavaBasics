@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="1dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp"
+    android:paddingTop="1dp"
+    android:background="@android:color/darker_gray"
+    tools:context="com.bridgelabz.mynewapp.MainActivity">
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="107dp"
+        android:id="@+id/spinner"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:id="@+id/buttonSelect"
+        android:layout_below="@+id/spinner"
+        android:layout_toEndOf="@+id/buttondelete"
+        android:layout_marginStart="26dp" />
+
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttondelete"
+        android:layout_alignBaseline="@+id/buttonSelect"
+        android:layout_alignBottom="@+id/buttonSelect"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Add New"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:id="@+id/buttonadd"
+        android:layout_alignBaseline="@+id/buttondelete"
+        android:layout_alignBottom="@+id/buttondelete"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttondelete"
+        android:layout_alignStart="@+id/buttondelete"
+        android:id="@+id/buttonUpdate" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:id="@+id/editTextPass"
+        android:layout_above="@+id/buttondelete"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="Enter User Id/ Name"
+        android:ems="10"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/editTextId"
+        android:layout_above="@+id/buttonSelect"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:id="@+id/buttonLogin"
+        android:layout_below="@+id/buttondelete"
+        android:layout_alignStart="@+id/buttonadd"
+        android:layout_marginStart="31dp" />
+
+    <Button
+        android:text="Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonBack"
+        android:layout_alignBaseline="@+id/buttonLogin"
+        android:layout_alignBottom="@+id/buttonLogin"
+        android:layout_toEndOf="@+id/buttondelete" />
+
+</RelativeLayout>
