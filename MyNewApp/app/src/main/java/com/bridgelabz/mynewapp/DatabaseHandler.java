@@ -104,5 +104,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return false;
         }
     }
+    public Cursor getUser( String name){
+        String selectQuery = "SELECT  * FROM " + TABLE_N+" where name ='"+name+"' ";
+        db = this.getWritableDatabase();
+        Cursor cursor=db.rawQuery(selectQuery,null);
+        return cursor;
+
+    }
 
 }

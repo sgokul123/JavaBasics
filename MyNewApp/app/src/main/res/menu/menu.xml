@@ -2,16 +2,16 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Admin"
+    <item android:title="Info"
         android:id="@+id/item1"
         android:icon="@drawable/edit"/>
-    <item android:title="User"
+    <item android:title="Calsi"
         android:id="@+id/item2"
         android:icon="@drawable/file"/>
-    <item android:title="Login"
+    <item android:title="find"
         android:id="@+id/item3"
         android:icon="@drawable/rename"/>
-    <item android:title="view"
+    <item android:title="Exit"
         android:id="@+id/item4"/>
 
 
