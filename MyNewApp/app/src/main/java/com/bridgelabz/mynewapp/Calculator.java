@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class Calculator extends AppCompatActivity implements View.OnClickListener{
         Button buttonone,buttontwo,buttonthr,buttonfour,buttonfiv,buttonsix,buttonsev,buttonzero;
     Button buttoneght,buttonnign,buttonadd,buttonmin,buttonmul,buttondiv,buttcancel,buttequals,Back;
+    Button buttongraph;
     String optr;
     int op2,op1;
     EditText disp;
@@ -37,10 +38,11 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         disp=(EditText) findViewById(R.id.display);
         buttonzero=(Button) findViewById(R.id.zero);
        buttonthr =(Button)findViewById(R.id.three);
-
+        buttongraph=(Button)findViewById(R.id.buttongraph);
         Back.setOnClickListener(this);
         buttonmul.setOnClickListener(this);
         buttonadd.setOnClickListener(this);
+        buttongraph.setOnClickListener(this);
         buttondiv.setOnClickListener(this);
         buttonmin.setOnClickListener(this);
         buttoneght.setOnClickListener(this);
@@ -204,7 +206,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                             disp.setText("");
 							op1 = op1 / op2;
                             disp.setText(Integer.toString(op1));
-
                         }
                         optr="";
                         op2=0;
@@ -213,6 +214,10 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                         Toast.makeText(getApplicationContext(),"Enter Secound Number", Toast.LENGTH_LONG).show();
                     }
                 }
+                break;
+            case  R.id.buttongraph:
+              Intent intentgraph=new Intent(Calculator.this, Graphiks.class);
+                startActivity(intentgraph);
                 break;
             case  R.id.back:
                finish();

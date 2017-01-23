@@ -150,6 +150,12 @@
         android:id = "@+id/back"
         android:text="Back"
         />
+
+    <Button
+        android:text="Graphics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttongraph" />
 </LinearLayout>
 
 

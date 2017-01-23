@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "286548095331",
+    "firebase_url": "https://ipl2017-56df4.firebaseio.com",
+    "project_id": "ipl2017-56df4",
+    "storage_bucket": "ipl2017-56df4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286548095331:android:3b80f23826db569e",
+        "android_client_info": {
+          "package_name": "com.bridgelabz.myipl2017"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286548095331-8l1e05i1d8no8ae05bc13k30rvhn8sp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD01PHiHO7hNRefISPOd8qFsOfMvAIc7dg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

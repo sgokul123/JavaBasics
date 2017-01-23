@@ -16,16 +16,6 @@
         android:id="@+id/textView" />
 
     <Button
-        android:text="Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonstart"
-        android:background="@drawable/play"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginStart="23dp" />
-
-    <Button
         android:text="Stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +30,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/buttonNext"
         android:background="@drawable/nexts"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="18dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/buttonstop" />
+        android:layout_alignStart="@+id/buttonstop" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonstart"
+        android:background="@drawable/play"
+        android:layout_marginStart="65dp"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_marginTop="18dp" />
 </RelativeLayout>

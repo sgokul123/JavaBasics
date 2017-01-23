@@ -3,6 +3,7 @@ package com.bridgelabz.mediaplayer;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Camera;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Environment;
@@ -20,6 +21,7 @@ import java.io.IOException;
 public class MediaREcorderEx extends AppCompatActivity {
     MediaRecorder recorder;
     File audiofile = null;
+    Camera camera;
     static final String TAG = "MediaRecording";
     Button startButton,stopButton;
 
@@ -37,15 +39,19 @@ public class MediaREcorderEx extends AppCompatActivity {
         //Creating file
         File dir = Environment.getExternalStorageDirectory();
         try {
-            audiofile = File.createTempFile("sound", ".mp3", dir);
+            audiofile = File.createTempFile("sound", ".3gp", dir);
         } catch (IOException e) {
             Log.e(TAG, "external storage access error");
             return;
         }
         //Creating MediaRecorder and specifying audio source, output format, encoder & output format
         recorder = new MediaRecorder();
+
+
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         recorder.setOutputFile(audiofile.getAbsolutePath());
         recorder.prepare();

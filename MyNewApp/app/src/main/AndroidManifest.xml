@@ -19,7 +19,8 @@
         <activity android:name=".DifferntViews" />
         <activity android:name=".HomePage" />
         <activity android:name=".Calculator" />
-        <activity android:name=".UserInfo"></activity>
+        <activity android:name=".UserInfo" />
+        <activity android:name=".Graphiks"></activity>
     </application>
 
 </manifest>

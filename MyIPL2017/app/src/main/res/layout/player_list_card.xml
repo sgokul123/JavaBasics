@@ -1,0 +1,87 @@
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/card"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    card_view:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:srcCompat="@drawable/asd"
+        android:id="@+id/imageView"
+        />
+    <TextView
+        android:id="@+id/p_dob"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/p_bowl_style"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_below="@+id/p_dob"
+        android:layout_marginLeft="10dp"
+
+        />
+
+    <TextView
+        android:id="@+id/p_bat_style"
+        android:layout_below="@+id/p_bowl_style"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_marginLeft="10dp"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/p_name"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_below="@+id/p_bat_style"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/p_role"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_below="@+id/p_name"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/p_nationality"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_below="@+id/p_role"
+            android:layout_marginLeft="10dp"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
