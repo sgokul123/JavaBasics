@@ -6,42 +6,12 @@
     tools:context="com.bridgelabz.ipl.view.TeamFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray">
+        android:id="@+id/teamrecycler"
+        android:background="@drawable/img22">
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="24dp"
-            android:id="@+id/imgurl"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+    </android.support.v7.widget.RecyclerView>
 
-        <TextView
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:hint="Team Name"
-
-            android:layout_toEndOf="@+id/imgurl"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="66dp"
-            android:id="@+id/teamName" />
-        <TextView
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:hint="Team Owner"
-
-            android:layout_toEndOf="@+id/imgurl"
-            android:layout_below="@+id/teamName"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="36dp"
-            android:id="@+id/teamOwner" />
-    </RelativeLayout>
 </FrameLayout>

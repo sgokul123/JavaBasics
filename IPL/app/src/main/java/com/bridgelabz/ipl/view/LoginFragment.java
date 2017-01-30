@@ -1,5 +1,6 @@
 package com.bridgelabz.ipl.view;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,23 +13,41 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bridgelabz.ipl.R;
+import com.bridgelabz.ipl.intrface.LoginInteface;
 import com.bridgelabz.ipl.viewModel.LoginViewModel;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/*
+* Auth : Sonawane Gokul R.
+* Date : 30/1/2017
+* Disc : it contains ogin Fragment , there is only User Name And Password
+*/
 public class LoginFragment extends Fragment
 {
-
-        private   String strName="gokul";
-    String strPass= "gokul";
-        Context context;
+    private boolean flag=false;
+    private   String strEmail,strPass;
+    Context context;
+    ProgressDialog mDialog;
     EditText editTextName;
     EditText editTextPass;
+    private Pattern pattern;
+    private Matcher matcher;
+
+    private static final String EMAIL_PATTERN ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    public LoginFragment(Context context) {
+        this.context =context;
+    }
+
     public LoginFragment() {
 
     }
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 
     public static Fragment newInstance(String url) {
+
         LoginFragment fragment = new LoginFragment();
         Bundle bundle = new Bundle();
         bundle.putString("URL", url);
@@ -42,37 +61,63 @@ public class LoginFragment extends Fragment
         super.onCreateView(inflater, container, savedInstanceState);
 
         View v= inflater.inflate(R.layout.fragment_login, container, false);
-        Toast.makeText(getActivity(), "frafgment", Toast.LENGTH_SHORT).show();
+
         editTextName= (EditText) v.findViewById(R.id.editName);
-         editTextPass= (EditText) v.findViewById(R.id.editPass);
-        //Button buttonLogin=(Button) v.findViewById(R.id.buttonLogin);
-      //  buttonLogin.setOnClickListener(this);
-        Log.i("namne", "onCreateView: "+strName+"..."+strPass);
-      //  strName = editTextName.getText().toString();
-        //strPass = editTextPass.getText().toString();
-     // Toast.makeText(context.getApplicationContext(),"Success  "+strName+"..."+strPass,Toast.LENGTH_SHORT).show();
-        Log.i("namne", "onCreateView: "+strName+"..."+strPass);
+        editTextPass= (EditText) v.findViewById(R.id.editPass);
+        Log.i("namne", "onCreateView: "+ strEmail +"..."+strPass);
+        Log.i("namne", "onCreateView: "+ strEmail +"..."+strPass);
         Button buttonLogin = (Button)v.findViewById(R.id.buttonLogin);
+
+        pattern = Pattern.compile(EMAIL_PATTERN);   // Pattern Matcher For Email Validation
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                strName = editTextName.getText().toString();
+
+                strEmail = editTextName.getText().toString();
                 strPass = editTextPass.getText().toString();
-                //Toast.makeText(getActivity(),"Success  "+strName+"..."+strPass,Toast.LENGTH_SHORT).show();
-                if(!(strName.equals("")&&strPass.equals(""))){
-                    LoginViewModel viewModel = new LoginViewModel(getActivity());
-                       viewModel.getLogin(strName,strPass);
-                    Toast.makeText(getActivity().getApplicationContext(),"Success  1"+strName+strPass+"...",Toast.LENGTH_SHORT).show();
+
+                if(!(strEmail.equals("")&&strPass.equals(""))) {
+                    matcher = pattern.matcher(strEmail);
+                    if (matcher.matches())
+                    {
+                        showProgress();
+                        LoginViewModel viewModel = new LoginViewModel(context);
+                        viewModel.getLogin(strEmail, strPass, new LoginInteface() {
+
+                        @Override
+                        public void fireBaseLogin(Boolean isLogin) {
+
+                            if (isLogin) {
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain, new TeamFragment(mDialog)).commit();
+                                Toast.makeText(getActivity().getApplicationContext(), "Login Success  ", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(getActivity().getApplicationContext(), "Do Not Match User Name And Password ...", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        });
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity().getApplicationContext(), "Please Enter Valid Email ...", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
                 else{
-                    Toast.makeText(getActivity().getApplicationContext(),"Please vEnter The User NAme  & Password... ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),"Please Enter The User Name  And Password ... ",Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
        return v;
     }
-
-
+    public void showProgress() {
+        mDialog  = new ProgressDialog(getActivity());
+        mDialog.setMessage("Downloading Data please wait");
+        mDialog.setCancelable(false);
+        mDialog.show();
+    }
 
 }

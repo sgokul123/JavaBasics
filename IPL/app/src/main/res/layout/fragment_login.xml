@@ -3,15 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img25"
     tools:context="com.bridgelabz.ipl.view.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imageView" />
 
     <EditText
         android:layout_width="match_parent"
@@ -19,7 +14,9 @@
         android:inputType="textPersonName"
         android:hint="User Name"
         android:ems="10"
-        android:layout_marginTop="300dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:foreground="@android:color/darker_gray"
+        android:layout_marginTop="270dp"
         android:id="@+id/editName" />
 
     <EditText
@@ -27,16 +24,18 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:foreground="@android:color/darker_gray"
        android:hint="Password"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="320dp"
         android:id="@+id/editPass" />
 
     <Button
         android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_width="200dp"
+        android:layout_marginTop="390dp"
 
-        android:layout_marginLeft="130dp"
-        android:layout_height="wrap_content"
+android:foreground="@android:color/background_dark"
+        android:layout_marginLeft="90dp"
+        android:layout_height="50dp"
         android:id="@+id/buttonLogin" />
 </FrameLayout>

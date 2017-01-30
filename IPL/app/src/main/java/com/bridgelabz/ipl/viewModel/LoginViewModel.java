@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.bridgelabz.ipl.controller.LoginController;
+import com.bridgelabz.ipl.intrface.LoginInteface;
 import com.bridgelabz.ipl.model.LoginModel;
 
 /**
@@ -17,19 +18,18 @@ public class LoginViewModel {
         this.context=context;
     }
 
-    public boolean getLogin(String uName, String pass) {
-        Log.i("LoginView Model", "Sign in Problem...."+uName+pass);
+    public void getLogin(String uName, String pass, final  LoginInteface islogin) {
+        Log.i("LoginView Model", "get signin...."+uName+pass);
 
         controller = new LoginController(context);
-      //  Log.i("model", "getLogin: viewmodel class");
         LoginModel loginModel=new LoginModel(uName,pass);
-        Log.i("model ", "getLogin: viewmodel class");
-        boolean flag=false;
-        flag=controller.getmDatabaseReference(loginModel );
+        controller.getmDatabaseReference(loginModel ,new LoginInteface() {
+            public void fireBaseLogin(Boolean login)
+            {
+                    islogin.fireBaseLogin(login);
+                Log.i("LoginView Model", "get signin....return"+login);
 
-
-        return flag;
-
-
+            }
+        });
     }
 }

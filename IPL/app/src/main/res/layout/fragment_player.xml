@@ -3,72 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/iplback"
     tools:context="com.bridgelabz.ipl.view.PlayerFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/playerrecycler"
+        android:background="@drawable/img22"
+        >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:id="@+id/playerImage" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playerImage"
-            android:id="@+id/playerName" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:id="@+id/playerBattingStyle"
-            android:layout_below="@+id/playerdob"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:id="@+id/playerBowlingStyle"
-            android:layout_below="@+id/playerBattingStyle"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playerBowlingStyle"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:id="@+id/playerRole" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/playerNationality"
-            android:layout_below="@+id/playerRole"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:id="@+id/playerdob"
-            android:layout_below="@+id/playerName"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp" />
-
-    </RelativeLayout>
+    </android.support.v7.widget.RecyclerView>
 </FrameLayout>
