@@ -28,10 +28,10 @@ public class LoginFragment extends Fragment
 {
     private boolean flag=false;
     private   String strEmail,strPass;
-    Context context;
-    ProgressDialog mDialog;
-    EditText editTextName;
-    EditText editTextPass;
+    private Context context;
+    private ProgressDialog mDialog;
+    private  EditText editTextName;
+    private EditText editTextPass;
     private Pattern pattern;
     private Matcher matcher;
 
@@ -89,7 +89,7 @@ public class LoginFragment extends Fragment
                         public void fireBaseLogin(Boolean isLogin) {
 
                             if (isLogin) {
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain, new TeamFragment(mDialog)).commit();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain, new TeamFragment(mDialog)).addToBackStack(null).commit();
                                 Toast.makeText(getActivity().getApplicationContext(), "Login Success  ", Toast.LENGTH_SHORT).show();
 
                             } else {
@@ -98,6 +98,8 @@ public class LoginFragment extends Fragment
                             }
                         }
                         });
+                        editTextName.setText("");
+                        editTextPass.setText("");
                     }
                     else
                     {

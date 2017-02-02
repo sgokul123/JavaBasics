@@ -33,6 +33,7 @@ public class TeamViewModel {
             public void fireBaseData(ArrayList<TeamInfoModel> teamInfoModels)
             {
                 list  = teamInfoModels;
+
                 arrayListdata.fireBaseData(list);
                 Log.d("Team_View_Model", "get data returne " );
             }

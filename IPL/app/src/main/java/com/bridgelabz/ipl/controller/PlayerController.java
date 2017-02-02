@@ -38,6 +38,7 @@ public class PlayerController {
                 modelArrayList.addAll(dataSnapshot.getValue(t));
                 Log.d("Player_Controller", "Value is: " );
                 arrayListdata.fireBaseData(modelArrayList);
+
             }
 
             @Override

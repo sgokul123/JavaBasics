@@ -91,8 +91,14 @@ public class TeamFragment extends Fragment {
                         View child = rv.findChildViewUnder(e.getX(), e.getY());
                         if(child != null && gestureDetector.onTouchEvent(e)) {
                             int position = rv.getChildAdapterPosition(child);
+
                             showProgress();
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment(teamInfoModels.get(position).getTeamname().toString(),mDialog)).commit();
+                            //  Fragment player = PlayerFragment.newInstance(teamInfoModels.get(position).getTeamname().toString(),mDialog);
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment(teamInfoModels.get(position).getTeamname().toString(),mDialog)).addToBackStack(null).commit();
+                             /* Intent intent=new Intent(getActivity(),PlayerImageGrid.class);
+                            intent.putExtra("team",teamInfoModels.get(position).getTeamname().toString());
+                            startActivity(intent);*/
+                           // mDialog.dismiss();
                             Toast.makeText(getActivity(),teamInfoModels.get(position).getTeamname()+"...",Toast.LENGTH_SHORT).show();
                         }
 

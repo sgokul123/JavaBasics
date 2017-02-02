@@ -14,13 +14,15 @@ import com.google.firebase.storage.StorageReference;
 
 
     public class DownloadImage {
-        public static Bitmap mBitmap;
+
+    public static Bitmap mBitmap;
 
         public static void downloadImage(String url, final DownloadImageInterface image){
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference reference = storage.getReference().child(url);
 
             final long IMAGE_SIZE = 1024*1024;
+            reference.getActiveDownloadTasks();
             reference.getBytes(IMAGE_SIZE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
                 public void onSuccess(byte[] bytes) {

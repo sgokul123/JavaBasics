@@ -3,10 +3,10 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="380sp"
     android:id="@+id/playerCard"
     android:layout_marginTop="5dp"
-    card_view:cardBackgroundColor="@android:color/holo_blue_dark"
+    card_view:cardBackgroundColor="@android:color/black"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     card_view:cardCornerRadius="5dp">
@@ -15,67 +15,21 @@
         android:layout_height="match_parent">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="350dp"
 
             android:id="@+id/playerImage"
-            android:background="@drawable/vivoipl" />
+            android:background="@drawable/img22" />
 
         <TextView
-            android:text="TextView"
-            android:layout_marginLeft="20dp"
+            android:text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/playerImage"
-            android:id="@+id/playerName" />
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="20sp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/playerName"
+            android:layout_below="@+id/playerImage" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:id="@+id/playerBattingStyle"
-            android:layout_below="@+id/playerdob"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:id="@+id/playerBowlingStyle"
-            android:layout_below="@+id/playerBattingStyle"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/playerBowlingStyle"
-            android:layout_marginTop="16dp"
-            android:id="@+id/playerRole" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/playerNationality"
-             android:layout_below="@+id/playerRole"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_marginLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:id="@+id/playerdob"
-            android:layout_below="@+id/playerName"
-            android:layout_alignParentEnd="true"
-            />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

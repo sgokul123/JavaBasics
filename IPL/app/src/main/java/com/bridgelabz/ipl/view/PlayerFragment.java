@@ -44,7 +44,7 @@ public class PlayerFragment extends Fragment {
 
     public PlayerFragment(String teamName,ProgressDialog mDialog) {
             this.teamName=teamName;
-        this.mDialog=mDialog;
+            this.mDialog=mDialog;
     }
 
 
@@ -76,8 +76,8 @@ public class PlayerFragment extends Fragment {
             {
                 playerInfoModels  = playerInfo;
                 final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                PlayerAdapter adapter = new PlayerAdapter(playerInfoModels, getActivity());
-                mDialog.dismiss();
+                PlayerAdapter adapter = new PlayerAdapter(playerInfoModels, getActivity(),mDialog);
+              // mDialog.dismiss();
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);
