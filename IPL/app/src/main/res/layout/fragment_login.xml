@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img25"
+
     tools:context="com.bridgelabz.ipl.view.LoginFragment">
 
          <EditText
@@ -12,9 +12,10 @@
         android:inputType="textPersonName"
         android:hint="@string/Email"
         android:ems="10"
-        android:textColor="@android:color/black"
 
-        android:layout_marginTop="250sp"
+        android:textColor="@android:color/white"
+
+        android:layout_marginTop="290sp"
         android:id="@+id/editName"
         android:textSize="20sp" />
 
@@ -23,21 +24,30 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:textColor="@android:color/white"
 
        android:hint="@string/Password"
-        android:layout_marginTop="320sp"
+        android:layout_marginTop="370sp"
         android:id="@+id/editPass"
         android:textSize="20sp" />
 
     <Button
         android:text="Login"
         android:layout_width="wrap_content"
-        android:layout_marginTop="390sp"
+        android:layout_marginTop="440sp"
 
-        android:layout_marginLeft="140sp"
+        android:layout_marginLeft="220sp"
         android:layout_height="wrap_content"
         android:id="@+id/buttonLogin"
-        android:background="?attr/colorPrimary"
-        android:textSize="20dp" />
+         android:textSize="18sp" />
+
+    <Button
+        android:text="Registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440sp"
+        android:textSize="18sp"
+        android:layout_marginLeft="30sp"
+        android:id="@+id/buttonregistration" />
 
 </FrameLayout>

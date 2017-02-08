@@ -52,9 +52,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
 
         TeamInfoModel model = teamList.get(i);
 
+        //set team  data
+
         holder.t_team_name.setText(model.getTeamname());
         holder.t_owner.setText(model.getOwner());
-       animation = AnimationUtils.loadAnimation(mContext.getApplicationContext(), R.anim.slide_down);
+        //Initialise Animatin  and assign to each card with data
+        animation = AnimationUtils.loadAnimation(mContext.getApplicationContext(), R.anim.slide_down);
         holder.teamcardView.setAnimation(animation);
         holder.teamcardView.startAnimation(animation);
         Log.d("Adapter", "Value added.. " +model.getUrl());
@@ -77,13 +80,14 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
     }
 
 
-
+    //
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
         public TextView t_owner,t_team_name;
         ImageView t_url;
         CardView teamcardView;
         public MyViewHolder(View view) {
             super(view);
+
             teamcardView=(CardView)view.findViewById(R.id.teamCard);
             t_owner = (TextView) view.findViewById(R.id.teamOwner);
             t_team_name = (TextView) view.findViewById(R.id.teamName);

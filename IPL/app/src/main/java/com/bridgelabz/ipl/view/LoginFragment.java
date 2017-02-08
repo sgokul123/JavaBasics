@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
 
 /*
 * Auth : Sonawane Gokul R.
-* Date : 30/1/2017
-* Disc : it contains ogin Fragment , there is only User Name And Password
+* Date : 18/1/2017
+* Disc : it contains  E-Mail And Password Validation for User Login
 */
 public class LoginFragment extends Fragment
 {
@@ -32,6 +32,7 @@ public class LoginFragment extends Fragment
     private ProgressDialog mDialog;
     private  EditText editTextName;
     private EditText editTextPass;
+    private  Button buttonLogin,buttonRegister;
     private Pattern pattern;
     private Matcher matcher;
 
@@ -45,17 +46,6 @@ public class LoginFragment extends Fragment
 
     }
 
-
-    public static Fragment newInstance(String url) {
-
-        LoginFragment fragment = new LoginFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("URL", url);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -64,10 +54,11 @@ public class LoginFragment extends Fragment
 
         editTextName= (EditText) v.findViewById(R.id.editName);
         editTextPass= (EditText) v.findViewById(R.id.editPass);
-        Log.i("namne", "onCreateView: "+ strEmail +"..."+strPass);
-        Log.i("namne", "onCreateView: "+ strEmail +"..."+strPass);
-        Button buttonLogin = (Button)v.findViewById(R.id.buttonLogin);
 
+        Log.i("namne", "onCreateView: "+ strEmail +"..."+strPass);
+
+         buttonLogin = (Button)v.findViewById(R.id.buttonLogin);
+        buttonRegister=(Button )v.findViewById(R.id.buttonregistration);
         pattern = Pattern.compile(EMAIL_PATTERN);   // Pattern Matcher For Email Validation
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -89,11 +80,14 @@ public class LoginFragment extends Fragment
                         public void fireBaseLogin(Boolean isLogin) {
 
                             if (isLogin) {
+                                mDialog.dismiss();
+                                //After Successful Login Load TeamModel
                                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain, new TeamFragment(mDialog)).addToBackStack(null).commit();
                                 Toast.makeText(getActivity().getApplicationContext(), "Login Success  ", Toast.LENGTH_SHORT).show();
 
                             } else {
                                 mDialog.dismiss();
+                                //if Login not Successful Then Clear All Field.
                                 Toast.makeText(getActivity().getApplicationContext(), "Do Not Match User Name And Password ...", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -113,13 +107,22 @@ public class LoginFragment extends Fragment
             }
         });
 
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new Registration(getActivity())).addToBackStack(null).commit();
+
+            }
+        });
+
+
+
        return v;
     }
     public void showProgress() {
         mDialog  = new ProgressDialog(getActivity());
-        mDialog.setMessage("Downloading Data please wait");
+        mDialog.setMessage("Authenticating User...");
         mDialog.setCancelable(false);
         mDialog.show();
     }
-
 }

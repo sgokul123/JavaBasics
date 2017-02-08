@@ -33,15 +33,17 @@ import java.util.List;
 public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.MyViewHolder> implements View.OnClickListener,View.OnLongClickListener {
     ByteArrayOutputStream bs = new ByteArrayOutputStream();
     private List<PlayerInfoModel> playerList;
-
+    //private ArrayList<Bitmap> bitmaps = new ArrayList<Bitmap>(30);
     private Context mContext;
     Animation animation;
-    int j;
+    int j,size;
     ProgressDialog mDialog;
     public PlayerAdapter( List<PlayerInfoModel> playerList,Context context,  ProgressDialog mDialog) {
         this.mContext = context;
         this.playerList =playerList;
         this.mDialog=mDialog;
+
+
 
     }
 
@@ -54,7 +56,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(final PlayerAdapter.MyViewHolder holder, int i) {
+    public void onBindViewHolder(final PlayerAdapter.MyViewHolder holder, final int i) {
         PlayerInfoModel model = playerList.get(i);
 
        /* holder.p_bowl_style.setText(model.getPlayer_bowling_style());
@@ -65,17 +67,22 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.MyViewHold
         holder.p_role.setText(model.getPlayer_role());*/
 
         holder.p_name.setText(model.getPlayer_name());
+
+        // Assign Animattion to each card.
         animation= AnimationUtils.loadAnimation(mContext,R.anim.fade_in);
         holder.playercardView.setAnimation(animation);
         holder.playercardView.startAnimation(animation);
+
+        //Download Images and assign to ImageView .
         DownloadImage.downloadImage(model.getPlayer_img_url(), new DownloadImageInterface() {
             @Override
             public void getImage(Bitmap bitmap) {
                 holder.playerImg.setImageBitmap(bitmap);
-
+          //      bitmaps.add(i,bitmap);
 
             }
         });
+
         mDialog.dismiss();
         Log.d("Player_Adapter", "Image Loaded.. " );
 

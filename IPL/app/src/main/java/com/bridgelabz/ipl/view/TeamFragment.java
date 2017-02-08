@@ -42,14 +42,6 @@ public class TeamFragment extends Fragment {
     }
 
 
-    public static TeamFragment newInstance(String param1, String param2) {
-
-        TeamFragment fragment = new TeamFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +52,8 @@ public class TeamFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_team, container, false);
         recyclerView  = (RecyclerView)view.findViewById(R.id.teamrecycler);
+        showProgress();
+        //Load All Team Data From Firbase
         TeamViewModel teamViewModel=new TeamViewModel(getActivity());
         teamViewModel.getTeamData(new ArrayListTeam()
         {
@@ -69,6 +63,7 @@ public class TeamFragment extends Fragment {
                 teamInfoModels  = teamInfos;
 
                 final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                // Atach cards to Recycler View
                 TeamAdapter adapter = new TeamAdapter(teamInfoModels, getActivity());
 
                 mDialog.dismiss();      //Dismiss Progress Dialog
@@ -92,14 +87,10 @@ public class TeamFragment extends Fragment {
                         if(child != null && gestureDetector.onTouchEvent(e)) {
                             int position = rv.getChildAdapterPosition(child);
 
-                            showProgress();
-                            //  Fragment player = PlayerFragment.newInstance(teamInfoModels.get(position).getTeamname().toString(),mDialog);
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment(teamInfoModels.get(position).getTeamname().toString(),mDialog)).addToBackStack(null).commit();
-                             /* Intent intent=new Intent(getActivity(),PlayerImageGrid.class);
-                            intent.putExtra("team",teamInfoModels.get(position).getTeamname().toString());
-                            startActivity(intent);*/
-                           // mDialog.dismiss();
-                            Toast.makeText(getActivity(),teamInfoModels.get(position).getTeamname()+"...",Toast.LENGTH_SHORT).show();
+                                showProgress(); //close Progress dialog
+                            // After click on Team Card Replace the  Team Fragment to Player Fragment
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment(teamInfoModels.get(position).getTeamname().toString(),mDialog)).addToBackStack(null).commit();
+                                Toast.makeText(getActivity(),teamInfoModels.get(position).getTeamname()+"...",Toast.LENGTH_SHORT).show();
                         }
 
                         return false;

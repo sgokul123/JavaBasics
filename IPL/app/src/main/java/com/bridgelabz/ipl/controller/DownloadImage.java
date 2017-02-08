@@ -8,8 +8,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+
 /**
- * Created by bridgeit on 30/1/17.
+ * Auth :Sonawane Gokul
+ * Date :25/1/2017
+ * Disc :this will Load Images From FireBase claude
  */
 
 
@@ -26,6 +29,7 @@ import com.google.firebase.storage.StorageReference;
             reference.getBytes(IMAGE_SIZE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
                 public void onSuccess(byte[] bytes) {
+                    //Download Only Single Image
                     mBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
                     image.getImage(mBitmap);

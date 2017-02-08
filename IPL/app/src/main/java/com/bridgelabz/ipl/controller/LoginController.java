@@ -18,8 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginController  {
     Context context;
-    String name, pass;
+    String eMAil, pass;
     FirebaseAuth mAuth;
+    //private FirebaseAuth.AuthStateListener mAuthListener;
     static int flag = 0;
 
     public LoginController(Context context) {
@@ -30,14 +31,15 @@ public class LoginController  {
     public void getmDatabaseReference(LoginModel loginModel, final LoginInteface islogin)
     {
         mAuth = FirebaseAuth.getInstance();
-
-        name = loginModel.getEmail();
+        //mAuth.addAuthStateListener(mAuthListener);
+        eMAil = loginModel.getEmail();
         pass = loginModel.getPass();
 
-        Log.i("controller", "User ..." + name + pass + "...");
+        Log.i("controller", "User ..." + eMAil + pass + "...");
 
         try {
-            mAuth.signInWithEmailAndPassword(name, pass).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+            //Check Login Validation of E-mail And Password
+            mAuth.signInWithEmailAndPassword(eMAil, pass).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -64,6 +66,38 @@ public class LoginController  {
 
 
     }
+    public  void getUserRegister(LoginModel loginModel, final LoginInteface isRegistered){
 
+
+        mAuth = FirebaseAuth.getInstance();
+
+        eMAil = loginModel.getEmail();
+        pass = loginModel.getPass();
+                try {
+                    Log.d("Registration Controller", "get register...."+eMAil+"  "+pass );
+
+                    //Register New User to firebase Database.
+                    mAuth.createUserWithEmailAndPassword(eMAil, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                    if (!task.isSuccessful()) {
+
+                                        isRegistered.fireBaseLogin(false);
+                                        Log.d("Registration Controller", "createUserWithEmail:onComplete:");
+
+                                    }
+                                    else
+                                    {
+                                         Log.d("Registration Controller", "createUserWithEmail:onComplete:");
+                                        isRegistered.fireBaseLogin(true);
+
+                                    }
+                                }
+                            });
+                }catch(Exception e){
+                    Toast.makeText(context, "Something is Wrong ...", Toast.LENGTH_SHORT).show();
+                }
+    }
 
 }

@@ -2,5 +2,11 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#e05f28b7</color>
+    <color name="LavenderGray">#6258d9</color>
+    <color name="CoolGrey">#1f2020</color>
+    <color name="DimGray">#d9201f1f</color>
+    <color name="BattleshipGrey">#cb4b4b19</color>
+    <color name="CandyAppleRed">#FF0800</color>
+
 </resources>

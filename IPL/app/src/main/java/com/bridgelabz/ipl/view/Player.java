@@ -2,6 +2,8 @@ package com.bridgelabz.ipl.view;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,6 +32,14 @@ public class Player extends AppCompatActivity {
         p_role=(TextView)findViewById(R.id.playRole);
         p_nati=(TextView)findViewById(R.id.playNation);
         imageView=(ImageView)findViewById(R.id.imageView);
+
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+
+
+      ///  birdImageView.setLayerType(LAYER_TYPE_SOFTWARE, null);
+        paint.setShadowLayer(5, 0, 5, Color.argb(255, 255, 0, 0));
+        imageView.setLayerPaint(paint);
         bundle= new Bundle();
         Intent intent=getIntent();
         bundle=intent.getBundleExtra("data");

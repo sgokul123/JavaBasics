@@ -14,7 +14,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 /**
- * Created by bridgeit on 27/1/17.
+ * Auth :Sonawane Gokul
+ * Date :25/1/2017
+ * Disc :this will Load Player data From FireBase claude
  */
 
 public class PlayerController {
@@ -31,12 +33,13 @@ public class PlayerController {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<PlayerInfoModel>> t = new GenericTypeIndicator<ArrayList<PlayerInfoModel>>() {
-                };  // This method is called once with the initial value and again
+                };
                 // whenever data at this location is updated.
                 Log.d("Player_Controller", "Value is: " );
                 ArrayList<PlayerInfoModel> modelArrayList = new ArrayList<PlayerInfoModel>();
                 modelArrayList.addAll(dataSnapshot.getValue(t));
-                Log.d("Player_Controller", "Value is: " );
+
+                //return Player data back to the PlayerView Model
                 arrayListdata.fireBaseData(modelArrayList);
 
             }

@@ -67,6 +67,7 @@ public class PlayerFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_player, container, false);
         recyclerView  = (RecyclerView)view.findViewById(R.id.playerrecycler);
+        //Download Player data Form Firebase.
         PlayerViewModel playerViewModel=new PlayerViewModel(getActivity());
 
         playerViewModel.getPlayerData(teamName,new ArrayListPlayer()
@@ -76,12 +77,15 @@ public class PlayerFragment extends Fragment {
             {
                 playerInfoModels  = playerInfo;
                 final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                //load data with RecyclerView
                 PlayerAdapter adapter = new PlayerAdapter(playerInfoModels, getActivity(),mDialog);
-              // mDialog.dismiss();
+
+                  // mDialog.dismiss();
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);
 
+                //assign  Listener to RecyclerView
                 recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                     GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
 

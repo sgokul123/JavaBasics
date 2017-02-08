@@ -14,7 +14,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 /**
- * Created by bridgeit on 27/1/17.
+ * Auth :Sonawane Gokul
+ * Date :25/1/2017
+ * Disc :this will Load Team data From FireBase claude
  */
 
 public class TeamController {
@@ -27,6 +29,8 @@ public class TeamController {
     }
 
     public DatabaseReference  getTeamInfoModels(final ArrayListTeam arrayListdata){
+
+        //Load Instance of Firebase and get Reference
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference().child("ipl");
 
@@ -38,9 +42,12 @@ public class TeamController {
                     // whenever data at this location is updated.
                     Log.d("Team_controller", "Value is: " );
                     ArrayList<TeamInfoModel> modelArrayList = new ArrayList<TeamInfoModel>();
+
+                    //get data And assign to ArrayList
                     modelArrayList.addAll(dataSnapshot.getValue(t));
 
-
+                    // return ArrayList to TeamViewModel by using Interface
+                    arrayListdata.fireBaseData(modelArrayList);
                     /*int i=0;
 
                     while(i<8)
@@ -52,7 +59,7 @@ public class TeamController {
                         i=i+1;
                     }
 */
-                    arrayListdata.fireBaseData(modelArrayList);
+
                 }
 
                 @Override
