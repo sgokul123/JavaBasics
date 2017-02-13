@@ -13,59 +13,59 @@
         android:layout_height="match_parent">
 
         <EditText
+            android:id="@+id/editview_registration_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:textColor="@android:color/white"
             android:ems="10"
             android:hint="E-Mail"
-            android:layout_marginTop="240sp"
-
-            android:id="@+id/editTexEmail" />
+            android:layout_marginBottom="@dimen/dimen_10dp"
+          android:layout_above="@+id/edittext_registration_pass1"
+            />
 
         <EditText
+            android:id="@+id/edittext_registration_pass1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@android:color/white"
             android:ems="10"
             android:hint="Password "
-            android:layout_below="@+id/editTexEmail"
-            android:layout_alignStart="@+id/editTexEmail"
-            android:layout_marginTop="20dp"
-            android:id="@+id/editTextPass1" />
+            android:layout_marginBottom="@dimen/dimen_10dp"
+          android:layout_above="@+id/edittext_registration_pass2"
+             />
 
         <EditText
+            android:id="@+id/edittext_registration_pass2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@android:color/white"
             android:ems="10"
             android:hint="Password"
-            android:layout_below="@+id/editTextPass1"
-            android:layout_alignStart="@+id/editTextPass1"
-            android:layout_marginTop="20dp"
-            android:id="@+id/editTextPass2" />
+            android:layout_marginBottom="@dimen/dimen_10dp"
+           android:layout_above="@+id/button_register"
+
+           />
 
         <Button
+            android:id="@+id/button_register"
             android:text="Resister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextPass2"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="59dp"
-            android:layout_marginTop="25dp"
-            android:id="@+id/buttonRegister" />
+           android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+             />
 
         <Button
+            android:id="@+id/button_registration_cancel"
             android:text="Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="62dp"
-            android:id="@+id/buttonCancel"
-            android:layout_alignBaseline="@+id/buttonRegister"
-            android:layout_alignBottom="@+id/buttonRegister"
-            android:layout_toEndOf="@+id/buttonRegister" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
 
 
     </RelativeLayout>

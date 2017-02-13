@@ -1,11 +1,11 @@
 package com.bridgeit.ipl2017.viewModel;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.bridgeit.ipl2017.controller.LoginController;
 import com.bridgeit.ipl2017.intrface.LoginInteface;
 import com.bridgeit.ipl2017.model.LoginModel;
+import com.bridgeit.ipl2017.utility.Debug;
 
 
 /**
@@ -13,7 +13,7 @@ import com.bridgeit.ipl2017.model.LoginModel;
  */
 
 public class LoginViewModel {
-
+    public static final String TAG = "LoginViewModel";
     LoginController controller;
     Context context;
 
@@ -27,7 +27,7 @@ public class LoginViewModel {
     //get Login to firebase data
     public void getLogin(String eMail, String pass, final LoginInteface islogin) {
 
-                                     //  Log.i("LoginView Model", "get signin...."+uName+pass);
+        //  Log.i("LoginView Model", "get signin...."+uName+pass);
 
         LoginModel loginModel=new LoginModel(eMail,pass);
 
@@ -35,9 +35,8 @@ public class LoginViewModel {
 
             public void fireBaseLogin(Boolean login)
             {
-                    islogin.fireBaseLogin(login);
-
-                Log.i("LoginView Model", "get signin....return"+login);
+                islogin.fireBaseLogin(login);
+                Debug.showLog(TAG,"get sign In...");
             }
         });
     }
@@ -46,7 +45,7 @@ public class LoginViewModel {
     public  void registerUser(String eMail,String pass, final  LoginInteface isRegister){
 
         LoginModel loginModel=new LoginModel(eMail,pass);
-        Log.i("LoginView Model", "get Registration....");
+        Debug.showLog(TAG,"Get Registration ...");
         controller.getUserRegister(loginModel ,new LoginInteface() {
 
             public void fireBaseLogin(Boolean register)

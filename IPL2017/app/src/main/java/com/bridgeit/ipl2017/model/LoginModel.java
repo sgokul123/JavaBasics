@@ -4,6 +4,7 @@ package com.bridgeit.ipl2017.model;
  * Created by bridgeit on 20/1/17.
  */
 public class LoginModel {
+
     String email;
     String pass;
 

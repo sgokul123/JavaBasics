@@ -1,11 +1,11 @@
 package com.bridgeit.ipl2017.viewModel;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.bridgeit.ipl2017.controller.PlayerController;
 import com.bridgeit.ipl2017.intrface.ArrayListPlayer;
 import com.bridgeit.ipl2017.model.PlayerInfoModel;
+import com.bridgeit.ipl2017.utility.Debug;
 
 import java.util.ArrayList;
 
@@ -15,9 +15,13 @@ import java.util.ArrayList;
  */
 
 public class PlayerViewModel {
-    Context context;
-    ArrayList<PlayerInfoModel> list;
-    String t_Name;
+
+    public static final String TAG = "PlayerViewModel";
+
+    private Context context;
+    private ArrayList<PlayerInfoModel> list;
+    private String t_Name;
+
     public PlayerViewModel(Context context)
     {
         this.context=context;
@@ -26,8 +30,7 @@ public class PlayerViewModel {
 
         t_Name=teamName;
         PlayerController playerController=new PlayerController();
-        Log.d("Player_View_Model", "get data "+t_Name);
-
+        Debug.showLog(TAG,"get data...");
 
         playerController.getPlayerInfoModels(t_Name,new ArrayListPlayer()
         {
@@ -36,12 +39,12 @@ public class PlayerViewModel {
             {
                 list  = playerInfoModels;
                 arraylistplayer.fireBaseData(list);
-                Log.d("Player_View_Model", "get data returne " );
+                Debug.showLog(TAG,"get data return...");
+
             }
 
         });
-       // Log.d("Player_View_Model", "get data returne " );
-
+        // Log.d("Player_View_Model", "get data returne " );
 
     }
 }

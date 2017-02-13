@@ -11,25 +11,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/imh12"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:padding="@dimen/dimen_20dp"
-        android:layout_marginEnd="13dp">
+        android:layout_alignParentTop="true"
+        android:background="@drawable/imh12"
+        android:padding="@dimen/dimen_20dp">
 
         <ImageView
+            android:id="@+id/imageViewMain"
             android:layout_width="400sp"
-            android:layout_marginTop="20dp"
             android:layout_height="300sp"
+            android:layout_marginTop="20dp"
             app:srcCompat="@drawable/img1234"
-            android:id="@+id/imageView2" />
-
-        <FrameLayout
+            />
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:id="@+id/framemain"
             android:layout_height="match_parent">
 
+            <FrameLayout
+                android:id="@+id/framemain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        </FrameLayout>
+
+            </FrameLayout>
+
+        </android.support.v4.widget.NestedScrollView>
     </RelativeLayout>
 </RelativeLayout>

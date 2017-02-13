@@ -29,17 +29,17 @@ public class LoginFragment extends Fragment
 
     public static final String TAG = "LoginFragment";
 
-    private boolean flag=false;
-    private   String strEmail,strPass;
-    private Context context;
+    private boolean mFlag =false;
+    private   String mStrEmail, mStrPass;
+    private Context mContext;
     private ProgressDialog mDialog;
 
     private  EditText mEditTexEmail;
 
-    private EditText editTextPass;
-    private  Button buttonLogin,buttonRegister;
-    private Pattern pattern;
-    private Matcher matcher;
+    private EditText mEditTextPass;
+    private  Button mButtonLogin, mButtonRegister;
+    private Pattern mPattern;
+    private Matcher mMatcher;
 
     private static final String EMAIL_PATTERN ="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                     + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -62,29 +62,29 @@ public class LoginFragment extends Fragment
 
         View v= inflater.inflate(R.layout.fragment_login, container, false);
 
-        mEditTexEmail= (EditText) v.findViewById(R.id.editTexEmail);
-        editTextPass= (EditText) v.findViewById(R.id.editPass);
+        mEditTexEmail= (EditText) v.findViewById(R.id.edittext_login_email);
+        mEditTextPass = (EditText) v.findViewById(R.id.editview_login_Pass);
 
-        Log.i("namne", "onCreateView: "+ strEmail +"..."+strPass);
+        Log.i("namne", "onCreateView: "+ mStrEmail +"..."+ mStrPass);
 
-         buttonLogin = (Button)v.findViewById(R.id.buttonLogin);
-        buttonRegister=(Button )v.findViewById(R.id.buttonregistration);
-        pattern = Pattern.compile(EMAIL_PATTERN);   // Pattern Matcher For Email Validation
+         mButtonLogin = (Button)v.findViewById(R.id.button_Login);
+        mButtonRegister =(Button )v.findViewById(R.id.button_login_registration);
+        mPattern = Pattern.compile(EMAIL_PATTERN);   // Pattern Matcher For Email Validation
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                strEmail = mEditTexEmail.getText().toString();
-                strPass = editTextPass.getText().toString();
+                mStrEmail = mEditTexEmail.getText().toString();
+                mStrPass = mEditTextPass.getText().toString();
 
-                if(!(strEmail.equals("")&&strPass.equals(""))) {
-                    matcher = pattern.matcher(strEmail);
-                    if (matcher.matches())
+                if(!(mStrEmail.equals("")&& mStrPass.equals(""))) {
+                    mMatcher = mPattern.matcher(mStrEmail);
+                    if (mMatcher.matches())
                     {
                         showProgress();
-                        LoginViewModel viewModel = new LoginViewModel(context);
-                        viewModel.getLogin(strEmail, strPass, new LoginInteface() {
+                        LoginViewModel viewModel = new LoginViewModel(mContext);
+                        viewModel.getLogin(mStrEmail, mStrPass, new LoginInteface() {
 
                         @Override
                         public void fireBaseLogin(Boolean isLogin) {
@@ -103,7 +103,7 @@ public class LoginFragment extends Fragment
                         }
                         });
                         mEditTexEmail.setText("");
-                        editTextPass.setText("");
+                        mEditTextPass.setText("");
                     }
                     else
                     {
@@ -117,7 +117,7 @@ public class LoginFragment extends Fragment
             }
         });
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        mButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new Registration(getActivity())).addToBackStack(null).commit();

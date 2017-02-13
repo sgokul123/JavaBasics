@@ -2,12 +2,13 @@ package com.bridgeit.ipl2017.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import com.bridgeit.ipl2017.utility.Debug;
 
 import java.util.ArrayList;
 
@@ -15,20 +16,22 @@ import java.util.ArrayList;
  * Created by bridgeit on 1/2/17.
  */
 public class ImageAdapter extends BaseAdapter {
-    private  ImageView imageView;
+    public static final String TAG = "ImageAdapter";
+
+    private  ImageView mImageView;
     private Context mContext;
     private int size,i;
     int j;
-    private   ArrayList<Bitmap> bitmaps;
+    private   ArrayList<Bitmap> mBitmapsImages;
    // private ArrayList<PlayerInfoModel> playerInfoModels=new ArrayList<>();
 
     public ImageAdapter(Context con, ArrayList<Bitmap> bitmaps) {
         mContext = con;
-      this.bitmaps=bitmaps;
+      this.mBitmapsImages =bitmaps;
     }
 
     public int getCount() {
-        return bitmaps.size();
+        return mBitmapsImages.size();
     }
 
     public Object getItem(int position) {
@@ -44,18 +47,17 @@ public class ImageAdapter extends BaseAdapter {
 
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(255, 255));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            mImageView = new ImageView(mContext);
+            mImageView.setLayoutParams(new GridView.LayoutParams(255, 255));
+            mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            mImageView.setPadding(8, 8, 8, 8);
         } else {
-            imageView = (ImageView) convertView;
+            mImageView = (ImageView) convertView;
         }
-        Log.d("Image_Adapter", "Image set ..."+size );
+        Debug.showLog(TAG,"Set Image..");
+        mImageView.setImageBitmap(mBitmapsImages.get(position));
 
-        imageView.setImageBitmap(bitmaps.get(position));
-
-        return imageView;
+        return mImageView;
     }
 
 }

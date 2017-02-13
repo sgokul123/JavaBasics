@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,6 +19,7 @@ import com.bridgeit.ipl2017.R;
 import com.bridgeit.ipl2017.adapter.PlayerAdapter;
 import com.bridgeit.ipl2017.intrface.ArrayListPlayer;
 import com.bridgeit.ipl2017.model.PlayerInfoModel;
+import com.bridgeit.ipl2017.utility.Debug;
 import com.bridgeit.ipl2017.viewModel.PlayerViewModel;
 
 import java.util.ArrayList;
@@ -29,11 +29,12 @@ import java.util.ArrayList;
 * Disc : It contain  Recycler View of Players
 */
 public class PlayerFragment extends Fragment {
+    public static final String TAG = "PlayerFragment";
 
-    private ArrayList<PlayerInfoModel> playerInfoModels=new ArrayList<>();
-    private  String teamName;
+    private ArrayList<PlayerInfoModel> mPlayerInfoModels =new ArrayList<>();
+    private  String mTeamName;
     ProgressDialog mDialog;
-    private RecyclerView recyclerView;
+    private RecyclerView mRecyclerView;
 
     private TeamFragment.OnFragmentInteractionListener mListener;
 
@@ -44,7 +45,7 @@ public class PlayerFragment extends Fragment {
     }
 
     public PlayerFragment(String teamName,ProgressDialog mDialog) {
-            this.teamName=teamName;  //TeamName for Refference if Team to fetch data
+            this.mTeamName =teamName;  //TeamName for Refference if Team to fetch data
             this.mDialog=mDialog;   //Progress Dialog instance For Dismiss after data fetch.
     }
 
@@ -67,27 +68,27 @@ public class PlayerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_player, container, false);
-        recyclerView  = (RecyclerView)view.findViewById(R.id.playerrecycler);
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.player_recycler);
         //Download Player data Form Firebase.
         PlayerViewModel playerViewModel=new PlayerViewModel(getActivity());
 
-        playerViewModel.getPlayerData(teamName,new ArrayListPlayer()
+        playerViewModel.getPlayerData(mTeamName,new ArrayListPlayer()
         {
             @Override
             public void fireBaseData(ArrayList<PlayerInfoModel> playerInfo)
             {
-                playerInfoModels  = playerInfo;
+                mPlayerInfoModels = playerInfo;
                 final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                 //load data with RecyclerView
-                PlayerAdapter adapter = new PlayerAdapter(playerInfoModels, getActivity(),mDialog);
+                PlayerAdapter adapter = new PlayerAdapter(mPlayerInfoModels, getActivity(),mDialog);
 
                   // mDialog.dismiss();
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                recyclerView.setAdapter(adapter);
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                mRecyclerView.setAdapter(adapter);
 
                 //assign  Listener to RecyclerView
-                recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+                mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                     GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
 
                         @Override public boolean onSingleTapUp(MotionEvent e) {
@@ -102,7 +103,7 @@ public class PlayerFragment extends Fragment {
                         if(child != null && gestureDetector.onTouchEvent(e)) {
                             int position = rv.getChildAdapterPosition(child);
                           //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment()).commit();
-                            Toast.makeText(getActivity(),playerInfoModels.get(position).getPlayer_name()+"...",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), mPlayerInfoModels.get(position).getPlayer_name()+"...",Toast.LENGTH_SHORT).show();
                         }
 
                         return false;
@@ -118,7 +119,8 @@ public class PlayerFragment extends Fragment {
 
                     }
                 });
-                Log.d("Player_fragment", "get data returne 1 " );
+                Debug.showLog(TAG,"get data return..");
+
             }
 
         });

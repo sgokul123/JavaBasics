@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import com.bridgeit.ipl2017.R;
 import com.bridgeit.ipl2017.controller.DownloadImage;
 import com.bridgeit.ipl2017.intrface.DownloadImageInterface;
 import com.bridgeit.ipl2017.model.TeamInfoModel;
+import com.bridgeit.ipl2017.utility.Debug;
 
 import java.util.List;
 
@@ -26,16 +26,16 @@ import java.util.List;
  */
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> {
-
-    private List<TeamInfoModel> teamList;
+    public static final String TAG = "TeamAdapter";
+    Animation mAnimation;
+    private List<TeamInfoModel> mTeamList;
     private Context mContext;
     private int lastPosition = -1;
-    Animation animation;
 
     public TeamAdapter(List<TeamInfoModel> teamList, Context context) {
-        Log.i("team adapter ", "  class");
+        Debug.showLog(TAG,"constructor..");
         this.mContext = context;
-        this.teamList =teamList;
+        this.mTeamList =teamList;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -51,52 +51,47 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
 
         //retribe data for single team
 
-        TeamInfoModel model = teamList.get(i);
+        TeamInfoModel model = mTeamList.get(i);
 
         //set team  data
 
         holder.t_team_name.setText(model.getTeamname());
         holder.t_owner.setText(model.getOwner());
         //Initialise Animatin  and assign to each card with data
-        animation = AnimationUtils.loadAnimation(mContext.getApplicationContext(), R.anim.slide_down);
-        holder.teamcardView.setAnimation(animation);
-        holder.teamcardView.startAnimation(animation);
-        Log.d("Adapter", "Value added.. " +model.getUrl());
+        mAnimation = AnimationUtils.loadAnimation(mContext.getApplicationContext(), R.anim.slide_down);
+        holder.teamcardView.setAnimation(mAnimation);
+        holder.teamcardView.startAnimation(mAnimation);
+        Debug.showLog(TAG,"Value Added.."+model.getUrl());
         DownloadImage.downloadImage(model.getUrl(), new DownloadImageInterface() {
             @Override
             public void getImage(Bitmap bitmap) {
                 holder.t_url.setImageBitmap(bitmap);
             }
         });
-
-        Log.d("Adapter", "Image Loaded.. " );
+        Debug.showLog(TAG,"Image Loaded...");
     }
-
-
-
 
     @Override
     public int getItemCount() {
-        return teamList.size();
+        return mTeamList.size();
     }
-
 
     //
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
+
         public TextView t_owner,t_team_name;
         ImageView t_url;
         CardView teamcardView;
+
         public MyViewHolder(View view) {
             super(view);
 
-            teamcardView=(CardView)view.findViewById(R.id.teamCard);
-            t_owner = (TextView) view.findViewById(R.id.teamOwner);
-            t_team_name = (TextView) view.findViewById(R.id.teamName);
-            t_url = (ImageView) view.findViewById(R.id.imgurl);
+            teamcardView=(CardView)view.findViewById(R.id.team_card);
+            t_owner = (TextView) view.findViewById(R.id.textview_team_owner);
+            t_team_name = (TextView) view.findViewById(R.id.textview_team_name);
+            t_url = (ImageView) view.findViewById(R.id.imageview_teamcard_imgurl);
             t_url.setOnClickListener(this);
         }
-
-
 
         @Override
         public void onClick(View view) {

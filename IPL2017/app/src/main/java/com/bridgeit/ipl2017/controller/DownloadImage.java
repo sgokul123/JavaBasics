@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.bridgeit.ipl2017.intrface.DownloadImageInterface;
+import com.bridgeit.ipl2017.utility.Debug;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -17,6 +18,8 @@ import com.google.firebase.storage.StorageReference;
 
 
     public class DownloadImage {
+    public static final String TAG = "DownloadImage";
+
 
     public static Bitmap mBitmap;
 
@@ -31,7 +34,7 @@ import com.google.firebase.storage.StorageReference;
                 public void onSuccess(byte[] bytes) {
                     //Download Only Single Image
                     mBitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
+                    Debug.showLog(TAG,"Downloading Image..");
                     image.getImage(mBitmap);
                 }
             });

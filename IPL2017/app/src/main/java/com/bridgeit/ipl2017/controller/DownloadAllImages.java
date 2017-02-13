@@ -16,6 +16,8 @@ import java.util.ArrayList;
  */
 
 public class DownloadAllImages {
+    public static final String TAG = "DownloadAllImages";
+
     public static ArrayList<Bitmap> mBitmap;
     private static int i=0;
    // private  int i=0;

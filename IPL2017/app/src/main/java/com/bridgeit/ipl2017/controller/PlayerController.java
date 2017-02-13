@@ -1,9 +1,8 @@
 package com.bridgeit.ipl2017.controller;
 
-import android.util.Log;
-
 import com.bridgeit.ipl2017.intrface.ArrayListPlayer;
 import com.bridgeit.ipl2017.model.PlayerInfoModel;
+import com.bridgeit.ipl2017.utility.Debug;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,39 +19,36 @@ import java.util.ArrayList;
  */
 
 public class PlayerController {
+    public static final String TAG = "PlayerController";
 
-    private  FirebaseDatabase database ;
-    private DatabaseReference myRef ;
-    private ArrayList<PlayerInfoModel> playerInfoModels;
+
+    private  FirebaseDatabase mDatabase;
+    private DatabaseReference mRef;
+    private ArrayList<PlayerInfoModel> mPlayerInfoModels;
     public DatabaseReference getPlayerInfoModels(String teamName,final ArrayListPlayer arrayListdata){
 
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child(teamName);
+        mDatabase = FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference().child(teamName);
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<ArrayList<PlayerInfoModel>> t = new GenericTypeIndicator<ArrayList<PlayerInfoModel>>() {
                 };
                 // whenever data at this location is updated.
-                Log.d("Player_Controller", "Value is: " );
+                Debug.showLog(TAG,"Geting data..");
                 ArrayList<PlayerInfoModel> modelArrayList = new ArrayList<PlayerInfoModel>();
                 modelArrayList.addAll(dataSnapshot.getValue(t));
-
                 //return Player data back to the PlayerView Model
                 arrayListdata.fireBaseData(modelArrayList);
-
             }
-
             @Override
             public void onCancelled(DatabaseError error) {
+                Debug.showLog(TAG,"Failed To Read Data..");
                 // Failed to read value
-                Log.w("Player_Controller", "Failed to read value.", error.toException());
+
             }
         });
-
-
-       // Log.w("Player_Controller", "controll return....");
 
         return null;
     }

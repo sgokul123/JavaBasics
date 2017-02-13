@@ -1,9 +1,8 @@
 package com.bridgeit.ipl2017.controller;
 
-import android.util.Log;
-
 import com.bridgeit.ipl2017.intrface.ArrayListTeam;
 import com.bridgeit.ipl2017.model.TeamInfoModel;
+import com.bridgeit.ipl2017.utility.Debug;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,59 +19,45 @@ import java.util.ArrayList;
  */
 
 public class TeamController {
-    FirebaseDatabase database ;
-    DatabaseReference myRef ;
-    ArrayList<TeamInfoModel> teamInfoModels;
+    public static final String TAG = "TeamController";
+
+    FirebaseDatabase mDatabase;
+    DatabaseReference mRef;
+    ArrayList<TeamInfoModel> mTeamInfoModels;
 
     public TeamController() {
-        teamInfoModels=new ArrayList<>();
+        mTeamInfoModels =new ArrayList<>();
     }
 
     public DatabaseReference  getTeamInfoModels(final ArrayListTeam arrayListdata){
 
         //Load Instance of Firebase and get Reference
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child("ipl");
+        mDatabase = FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference().child("ipl");
 
-            myRef.addValueEventListener(new ValueEventListener() {
+            mRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     GenericTypeIndicator<ArrayList<TeamInfoModel>> t = new GenericTypeIndicator<ArrayList<TeamInfoModel>>() {
                     };
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-
-                    Log.d("Team_controller", "Value is: " );
+                    Debug.showLog(TAG,"Geting Data..");
                     ArrayList<TeamInfoModel> modelArrayList = new ArrayList<TeamInfoModel>();
-
                     //get data And assign to ArrayList
                     modelArrayList.addAll(dataSnapshot.getValue(t));
-
                     // return ArrayList to TeamViewModel by using Interface
                     arrayListdata.fireBaseData(modelArrayList);
-                    /*int i=0;
-
-                    while(i<8)
-                    {
-                        TeamInfoModel value = modelArrayList.get(i);
-                      //  teamInfoModels.add(value);
-                        Log.d("kl", "Value is: " + value.getUrl() + "  "+value.getOwner()+value.getTeamname());
-                        //textView.setText(textView.getText() + value.getUrl() +"  "+ value.getOwner()+"  "+value.getTeamname() + "\n");
-                        i=i+1;
-                    }
-*/
 
                 }
 
                 @Override
                 public void onCancelled(DatabaseError error) {
                     // Failed to read value
-                    Log.w("Team_Controller", "Failed to read value.", error.toException());
+                    Debug.showLog(TAG,"Failed To Read Data..");
+
                 }
             });
-
-
-        Log.w("Team_Controller", "controll return....");
 
         return null;
     }

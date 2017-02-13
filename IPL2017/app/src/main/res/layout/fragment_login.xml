@@ -5,11 +5,15 @@
     android:padding="@dimen/dimen_20dp"
     tools:context="com.bridgeit.ipl2017.view.LoginFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
     <EditText
-        android:id="@+id/editTexEmail"
+        android:id="@+id/edittext_login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editPass"
+        android:layout_above="@+id/editview_login_Pass"
         android:layout_marginBottom="@dimen/dimen_10dp"
         android:ems="10"
         android:hint="@string/Email"
@@ -19,10 +23,10 @@
         />
 
     <EditText
-        android:id="@+id/editPass"
+        android:id="@+id/editview_login_Pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonLogin"
+        android:layout_above="@+id/button_Login"
         android:layout_marginBottom="@dimen/dimen_10dp"
         android:ems="10"
         android:hint="@string/Password"
@@ -32,7 +36,7 @@
         />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/button_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -43,15 +47,17 @@
         />
 
     <Button
-        android:id="@+id/buttonregistration"
+        android:id="@+id/button_login_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30sp"
+
         android:text="Registration"
         android:textSize="18sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         />
+    </RelativeLayout>
+
 
 </RelativeLayout>

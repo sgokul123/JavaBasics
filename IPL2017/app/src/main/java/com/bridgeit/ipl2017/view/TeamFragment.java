@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,14 +27,14 @@ import java.util.ArrayList;
 * Disc : it contain  Recycler View of Team
 */
 public class TeamFragment extends Fragment {
-
-    private  ArrayList<TeamInfoModel> teamInfoModels=new ArrayList<>();
+    public static final String TAG = "TeamFragment";
     ProgressDialog mDialog;
-    private RecyclerView recyclerView;
+    private  ArrayList<TeamInfoModel> mTeamInfoModels =new ArrayList<>();
+    private RecyclerView mRecyclerView;
     private OnFragmentInteractionListener mListener;
 
     public TeamFragment(ProgressDialog mDialog) {
-            this.mDialog = mDialog;             //Main Activit Process Dialog
+        this.mDialog = mDialog;             //Main Activit Process Dialog
     }
 
     public TeamFragment() {
@@ -51,7 +50,7 @@ public class TeamFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_team, container, false);
-        recyclerView  = (RecyclerView)view.findViewById(R.id.teamrecycler);
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.team_recycler);
         showProgress();
         //Load All Team Data From Firbase json file
         TeamViewModel teamViewModel=new TeamViewModel(getActivity());
@@ -60,18 +59,17 @@ public class TeamFragment extends Fragment {
             @Override
             public void fireBaseData(ArrayList<TeamInfoModel> teamInfos)
             {
-                teamInfoModels  = teamInfos;
 
+                mTeamInfoModels = teamInfos;
                 final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                 // Atach cards to Recycler View with data
-                TeamAdapter adapter = new TeamAdapter(teamInfoModels, getActivity());
-
+                TeamAdapter adapter = new TeamAdapter(mTeamInfoModels, getActivity());
                 mDialog.dismiss();      //Dismiss Progress Dialog
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                mRecyclerView.setAdapter(adapter);
 
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                recyclerView.setAdapter(adapter);
-                recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener()
+                mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener()
                 {
                     GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
 
@@ -87,16 +85,14 @@ public class TeamFragment extends Fragment {
                         if(child != null && gestureDetector.onTouchEvent(e)) {
                             int position = rv.getChildAdapterPosition(child);
 
-                                showProgress(); //close Progress dialog
-
+                            showProgress(); //close Progress dialog
                             // After click on Team Card Replace the  Team Fragment to Player Fragment
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment(teamInfoModels.get(position).getTeamname().toString(),mDialog)).addToBackStack(null).commit();
-                                Toast.makeText(getActivity(),teamInfoModels.get(position).getTeamname()+"...",Toast.LENGTH_SHORT).show();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.framemain,new PlayerFragment(mTeamInfoModels.get(position).getTeamname().toString(),mDialog)).addToBackStack(null).commit();
+                            Toast.makeText(getActivity(), mTeamInfoModels.get(position).getTeamname()+"...",Toast.LENGTH_SHORT).show();
                         }
 
                         return false;
                     }
-
                     @Override
                     public void onTouchEvent(RecyclerView rv, MotionEvent e) {
 
@@ -107,25 +103,22 @@ public class TeamFragment extends Fragment {
 
                     }
                 });
-                Log.d("Team_fragment", "get data returne  " );
             }
 
         });
 
-
-      return view;
+        return view;
     }
 
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
     public void showProgress() {
         //Process Dialog Creation
         mDialog  = new ProgressDialog(getActivity());
         mDialog.setMessage("Downloading Data please wait");
         mDialog.setCancelable(false);
         mDialog.show();
+    }
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }

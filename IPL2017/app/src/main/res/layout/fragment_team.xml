@@ -7,9 +7,9 @@
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/team_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/teamrecycler"
         android:background="@drawable/img12">
 
     </android.support.v7.widget.RecyclerView>
