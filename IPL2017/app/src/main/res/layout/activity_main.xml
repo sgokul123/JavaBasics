@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.bridgeit.ipl2017.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/imh12"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/dimen_20dp"
+        android:layout_marginEnd="13dp">
+
+        <ImageView
+            android:layout_width="400sp"
+            android:layout_marginTop="20dp"
+            android:layout_height="300sp"
+            app:srcCompat="@drawable/img1234"
+            android:id="@+id/imageView2" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/framemain"
+            android:layout_height="match_parent">
+
+
+        </FrameLayout>
+    </RelativeLayout>
+</RelativeLayout>

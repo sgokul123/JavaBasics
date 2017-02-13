@@ -1,0 +1,72 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.bridgeit.ipl2017.view.Registration">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/white"
+            android:ems="10"
+            android:hint="E-Mail"
+            android:layout_marginTop="240sp"
+
+            android:id="@+id/editTexEmail" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@android:color/white"
+            android:ems="10"
+            android:hint="Password "
+            android:layout_below="@+id/editTexEmail"
+            android:layout_alignStart="@+id/editTexEmail"
+            android:layout_marginTop="20dp"
+            android:id="@+id/editTextPass1" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="@android:color/white"
+            android:ems="10"
+            android:hint="Password"
+            android:layout_below="@+id/editTextPass1"
+            android:layout_alignStart="@+id/editTextPass1"
+            android:layout_marginTop="20dp"
+            android:id="@+id/editTextPass2" />
+
+        <Button
+            android:text="Resister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextPass2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="25dp"
+            android:id="@+id/buttonRegister" />
+
+        <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="62dp"
+            android:id="@+id/buttonCancel"
+            android:layout_alignBaseline="@+id/buttonRegister"
+            android:layout_alignBottom="@+id/buttonRegister"
+            android:layout_toEndOf="@+id/buttonRegister" />
+
+
+    </RelativeLayout>
+</FrameLayout>
